@@ -1,31 +1,24 @@
 
 import java.util.Scanner;
-
- class PrimeInterval {
+ class NeonNumber {
     public static void main(String[] args) {
       try  (Scanner sc = new Scanner(System.in)) {
-           System.out.print("Enter start of interval: ");
-           int start = sc.nextInt();
-           System.out.print("Enter end of interval: ");
-           int end = sc.nextInt();
-           sc.close();
+         System.out.print("Enter a number: ");
+         int num = sc.nextInt();
+         sc.close();
 
-           System.out.println("Prime numbers between " + start + " and " + end + ":");
-           for (int i = start; i <= end; i++) {
-              if (isPrime(i)) {
-                  System.out.print(i + " ");
-            
-                }
-           }
-        }
-    }
+         int square = num * num;
+         int sum = 0;
 
+         while (square > 0) {
+             sum += square % 10;
+             square /= 10;
+         }
 
-    static boolean isPrime(int n) {
-        if (n <= 1) return false;
-        for (int i = 2; i * i <= n; i++) {
-            if (n % i == 0) return false;
-        }
-        return true;
+         if (sum == num)
+             System.out.println(num + " is a Neon number.");
+         else
+             System.out.println(num + " is NOT a Neon number.");
+      }
     }
 }
